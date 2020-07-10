@@ -1,0 +1,26 @@
+const mongoose = require('mongoose');
+const {ObjectId} = mongoose.Schema.Types
+const UserSchema = new mongoose.Schema({
+    name : {
+        type : String,
+        required :true
+    },
+    email : {
+        type : String,
+        required :true
+    },
+    password : {
+        type : String,
+        required :true
+    },
+    followers : [{type: ObjectId, ref:"User"}],
+    following : [{type: ObjectId, ref:"User"}],
+
+    dpURL : {
+        type: String,
+        required : false,
+        default: "https://res.cloudinary.com/ayush-instaclone/image/upload/v1594368979/default_oefvls.jpg"
+    }
+})
+
+module.exports = mongoose.model('User',UserSchema);

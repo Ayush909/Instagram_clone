@@ -1,0 +1,8 @@
+.stories-wrapper{
+    display: flex;
+    padding: 16px 0;
+    margin-bottom: 24px;
+    border: 1px solid rgba(var(--b6a,219,219,219),1);
+    border-radius: 3px;
+    overflow: hidden;
+}

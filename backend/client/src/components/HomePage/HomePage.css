@@ -1,0 +1,12 @@
+.homepage-section{
+    display: flex;
+    max-width: 935px;
+    padding-top: 30px;
+    position: relative;
+}
+
+@media only screen and (max-width:768px){
+    .homepage-section{
+        flex-wrap: wrap;
+    }
+}

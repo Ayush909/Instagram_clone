@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap');
+
+/*SignIn card css */
+.mycard{
+    margin-top: 50px;
+}
+.auth-card{
+    padding: 20px;
+    max-width: 350px;
+    text-align: center;
+    margin: 10px auto;
+}
+.auth-card h2{
+    font-family: 'Grand Hotel', cursive;
+}
+.auth-card h6{
+    margin-top: 30px;
+}
+.btn-login{
+    background: #0095F6;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    font-weight: 600;
+    display: block;
+    width: 100%;
+}
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #0095F6!important;
+    box-shadow: 0 1px 0 0 #0095F6!important;
+  }

@@ -1,0 +1,17 @@
+.pro_single_post{
+    position: relative;
+}
+
+.pro_single_post a img{
+    width: 100%;
+    max-width: 293px;
+   height: 293px;
+    margin: 0 20px 20px 0;
+}
+
+.pro_single_post i{
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    cursor: pointer;
+}

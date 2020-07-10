@@ -1,0 +1,52 @@
+.profile_wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 60px 20px 0;
+    max-width: 935px;
+}
+.profile_header{
+    display: flex;
+    margin-bottom: 44px;
+}
+.profile_header_left{
+    margin-right: 30px;
+}
+.profile_user_dp{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.profile_username{
+    display: flex;
+}
+.profile_username p{
+    margin: 0;
+    font-size: 1.5rem;
+}
+.profile_username a{
+    margin-left: 20px;
+}
+.profile_username a button{
+    background-color: transparent;
+    border: 1px solid #dbdbdb;
+    font-size: 1.5rem;
+    border-radius: 4px;
+}
+.profile_followers{
+    display: flex;
+}
+.profile_followers li {
+    margin-right: 40px;
+}
+
+.profile_posts{
+    border-top: 1px solid #dbdbdb;
+}
+
+.profile_posts p span{
+    margin-left: 6px;
+}
+.pro_posts_wrapper{
+    display: flex;
+    flex-wrap: wrap;
+}

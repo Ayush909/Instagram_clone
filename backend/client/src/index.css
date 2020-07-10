@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #FAFAFA;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+nav{
+  height: 54px;
+}
+nav .sidenav-trigger {
+  margin: 0;
+}
+nav a,nav ul a{
+  padding: 0 10px;
+  color: black;
+}
+.brand-logo img{
+  padding-top: 15px;
+
+}
+
+#spinner_loader{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+#dp_button{
+  color: black;
+  background-color: transparent;
+  border: 1px solid #dbdbdb;
+  font-size: 1.5rem;
+  border-radius: 4px;
+}
+
+#modal-dp-content{
+  display: flex;
+}
+#modal-dp-content h5{
+  margin: 0;
+  margin-right: 45px;
+}
+
+.modal-image{
+  width: 300px;
+  height : 400px;
+}
+
+#modal-image-content{
+  display: flex;
+}
+.modal-image-content-right{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+@media only screen and (min-width: 601px){
+  nav .nav-wrapper i{
+    height: 56px;
+  }
+
+}
+
