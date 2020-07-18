@@ -17,7 +17,7 @@ import './PostCard.css'
 
         //function to handle like and unlike //=> axios.put(url,body,headers)
         const likePost = (postID)=>{
-            axios.put('http://localhost:5000/api/post/like',
+            axios.put('/api/post/like',
             {
                 postID : postID
             },{
@@ -27,7 +27,7 @@ import './PostCard.css'
             }
             )
             .then(res=>{
-                console.log(res.data)
+                // console.log(res.data)
                 setNoOfLike(res.data.likes)
             })
             .catch(err=>{
@@ -38,7 +38,7 @@ import './PostCard.css'
         //function to make comments on a post //=> axios.put(url,body,headers)
         const makeComment = (text,postID)=>{
 
-            axios.put('http://localhost:5000/api/post/comment',{
+            axios.put('/api/post/comment',{
                 text,
                 postID
             },{
@@ -48,8 +48,10 @@ import './PostCard.css'
             }
             )
             .then(res=>{
-                console.log(res.data)
+                // console.log(res.data)
                 setCommentsArr(res.data.comments)
+                let commentform = document.getElementById('comment_box')
+                commentform.reset();
             })
             .catch(err=>{
                 console.error(err)
@@ -62,9 +64,9 @@ import './PostCard.css'
            
             <article key={_id} className="homepage_article">
                 <header className="postcard_user">
-                    <div><img src={PostedBy.dpURL}/></div>
+                    <div><img alt="userpost" src={PostedBy.dpURL}/></div>
                     <div style={{display:"flex",flexDirection:"column"}}>
-                        <div><Link to={ PostedBy._id != state._id ? "/profile/"+PostedBy._id : "/profile"}>{PostedBy.name}</Link></div>
+                        <div id="postcard_name"><Link to={ PostedBy._id != state._id ? "/profile/"+PostedBy._id : "/profile"}>{PostedBy.name}</Link></div>
                         <div>{title}</div>
                     </div>
                 </header>
@@ -86,7 +88,7 @@ import './PostCard.css'
                     </section>
                     <section>
                         <div className="postcard_comment_wrapper">
-                            <form className="comment_box" onSubmit={(e)=>{
+                            <form id="comment_box" className="comment_box" onSubmit={(e)=>{
                                 e.preventDefault();
                                 makeComment(e.target[0].value,_id)
                             }}>

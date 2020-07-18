@@ -11,41 +11,81 @@ import AddDpModal from '../Modals/AddDP.modal.js'
         const [data,setData] = useState([]);
 
         useEffect(() => {
-            axios.get('http://localhost:5000/api/post/myposts',{
-                headers : {
-                    'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
+
+            const CancelToken = axios.CancelToken;
+            const source = CancelToken.source();
+
+            try{
+
+                axios.get('/api/post/myposts',{
+                    headers : {
+                        'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
+                    },
+                    cancelToken: source.token
+                })
+                .then(result=>{
+                     console.log(result.data)
+                    setData(result.data.myposts)
+                })
+                .catch(err=>{
+                    console.log(err)
+                })
+
+            }catch (error) {
+                if (axios.isCancel(error)) {
+                console.log("cancelled");
+                } else {
+                throw error;
                 }
-            })
-            .then(result=>{
-                console.log(result.data)
-                setData(result.data.myposts)
-            })
-            .catch(err=>{
-                console.log(err)
-            })
+            }
+
+            return ()=>{
+                source.cancel();
+            }         
                     
         }, [])
 
         useEffect(()=>{
-            axios.get('http://localhost:5000/api/user/myprofile',{
-                headers : {
-                    'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
+
+            const CancelToken = axios.CancelToken;
+            const source = CancelToken.source();
+
+            try{
+
+                axios.get('/api/user/myprofile',{
+                    headers : {
+                        'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
+                    },
+                    cancelToken: source.token
+                })
+                .then(result=>{
+                    // console.log(result.data)
+                    setUser(result.data.user)
+                    
+                })
+                .catch(err=>{
+                    console.log(err)
+                })
+
+            }catch (error) {
+                if (axios.isCancel(error)) {
+                console.log("cancelled");
+                } else {
+                throw error;
                 }
-            })
-            .then(result=>{
-                console.log(result.data)
-                setUser(result.data.user)
-                
-            })
-            .catch(err=>{
-                console.log(err)
-            })
+            }
+
+            return ()=>{
+                source.cancel();
+            }
+
+            
         },[])
 
         
 
         const deletePost = (postID)=>{
-            axios.delete(`http://localhost:5000/api/post/deletepost/${postID}`,{
+            axios.delete(`/api/post/deletepost/${postID}`,{
                 headers : {
                     'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
                 }
@@ -64,7 +104,7 @@ import AddDpModal from '../Modals/AddDP.modal.js'
        
 
         return (
-            <>
+            <div>
             {user ? 
                 <main>
                 <div className="container profile_wrapper">
@@ -111,14 +151,14 @@ import AddDpModal from '../Modals/AddDP.modal.js'
             </main>
             :
 
-            <div class="preloader-wrapper small active" id="spinner_loader">
-                <div class="spinner-layer spinner-green-only">
-                <div class="circle-clipper left">
-                    <div class="circle"></div>
-                </div><div class="gap-patch">
-                    <div class="circle"></div>
-                </div><div class="circle-clipper right">
-                    <div class="circle"></div>
+            <div className="preloader-wrapper small active" id="spinner_loader">
+                <div className="spinner-layer spinner-green-only">
+                <div className="circle-clipper left">
+                    <div className="circle"></div>
+                </div><div className="gap-patch">
+                    <div className="circle"></div>
+                </div><div className="circle-clipper right">
+                    <div className="circle"></div>
                 </div>
                 </div>
             </div>
@@ -129,7 +169,7 @@ import AddDpModal from '../Modals/AddDP.modal.js'
             
 
             
-            </>
+            </div>
         )
     
 }

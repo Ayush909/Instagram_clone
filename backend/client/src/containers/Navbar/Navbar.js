@@ -69,8 +69,8 @@ function Header () {
             <nav className="white">
               <div className="nav-wrapper ">
                 <div className="container">
-                  <Link to={state ? "/" : "/signin"} className="brand-logo"><img src={InstaLogo}/></Link>
-                  <a to="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
+                  <Link to={state ? "/" : "/signin"} className="brand-logo"><img alt="logo" src={InstaLogo}/></Link>
+                  <a href="#" data-target="mobile-demo" className="sidenav-trigger"><i className="material-icons">menu</i></a>
                   <ul id="nav-mobile" className="right hide-on-med-and-down blue-text">
                     {renderList()}
                   </ul>

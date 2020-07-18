@@ -20,7 +20,7 @@ function SignUp() {
             password
         }
 
-        axios.post('http://localhost:5000/api/signup',newuser)
+        axios.post('/api/signup',newuser)
             .then(res=>{
                 console.log(res.data)
                 M.toast({html: 'Account created!'})
@@ -51,7 +51,7 @@ function SignUp() {
                             onChange={e=>setEmail(e.target.value)}
                         />
                         <input
-                            type="text"
+                            type="password"
                             placeholder="Password"
                             value={password}
                             required

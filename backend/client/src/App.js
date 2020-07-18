@@ -17,7 +17,6 @@ const Routing = ()=>{
   const {state,dispatch} = useContext(UserContext);
 
   useEffect(() => {
-    console.log('useeffect app.js running')
     const user = JSON.parse(localStorage.getItem('user'))
 
     if(user){

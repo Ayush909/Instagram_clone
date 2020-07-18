@@ -15,3 +15,70 @@
     right: 30px;
     cursor: pointer;
 }
+
+/* Profile single post Modal */
+.modal-image{
+    max-width: 300px;
+    height : 400px;
+    width: 100%;
+}
+  
+#modal-image-content{
+    display: flex;
+}
+.modal-image-content-right{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+#modal-image-content{
+    padding: 0;
+}
+.xyz1{
+    display: flex;
+    padding: 16px;
+    border-bottom: 1px solid #efefef;
+}
+.xyz1 p{
+    margin-left: 14px;
+}
+/* dp inside modal */
+.xyz2{
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    margin: 0;
+}
+.xyz4 p{
+    margin: 0;
+}
+.xyz4 p span{
+    font-weight: bold;
+}
+.xyz4{
+    margin-bottom: 10px;
+}
+.xyz5 p{
+    margin: 0;
+    font-weight: bold;
+}
+.xyz5{
+    margin-left: 6px;
+}
+
+@media only screen and (max-width:425px){
+    #modal-image-content{
+        flex-wrap: wrap;
+    }
+    .modal-image{
+        /* max-width: 200px; */
+        height : 200px;
+        width: 100%;
+    }
+    .xyz1{
+        padding: 0;
+    }
+    .xyz1 p{
+        margin-left: 4px;
+    }
+}

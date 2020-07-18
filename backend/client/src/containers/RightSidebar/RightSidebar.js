@@ -11,13 +11,13 @@ function RightSidebar() {
         
         useEffect(()=>{
 
-            axios.get('http://localhost:5000/api/user/mysuggestions',{
+            axios.get('/api/user/mysuggestions',{
                 headers : {
                     'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
                 }
             })
             .then(result=>{
-                console.log(result.data)
+                // console.log(result.data)
                 setData(result.data.accounts)
             })
             .catch(err=>{
@@ -27,13 +27,13 @@ function RightSidebar() {
         },[])
 
         useEffect(()=>{
-            axios.get('http://localhost:5000/api/user/myprofile',{
+            axios.get('/api/user/myprofile',{
                 headers : {
                     'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
                 }
             })
             .then(result=>{
-                console.log(result.data)
+                // console.log(result.data)
                 setUser(result.data.user)
                 
             })
@@ -45,7 +45,7 @@ function RightSidebar() {
         return (
             <div className="right-sidebar ">
                 <div className="user_info_side_wrapper">
-                    <img className="user_dp_side" src={user.dpURL}/>
+                    <img alt="userdp" className="user_dp_side" src={user.dpURL}/>
                     <div className="user_info">
                         <div className="user_fullname">{state ? state.name : "loading..."}</div>
                         <div className="user_bio">Bio</div>

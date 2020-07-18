@@ -44,7 +44,7 @@ router.post('/createpost',tokenValidation,(req,res)=>{
 router.get('/myposts',tokenValidation,(req,res)=>{
     
     Post.find({PostedBy : req.user})
-        .populate("PostedBy" , "_id name")
+        .populate("PostedBy" , "_id name dpURL")
         .populate("comments.postedBy","name _id")
         .then(posts=>{
             res.json({myposts: posts});

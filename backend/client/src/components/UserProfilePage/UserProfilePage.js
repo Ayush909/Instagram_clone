@@ -13,13 +13,13 @@ import ProSinglePost from '../ProSinglePost/ProSinglePost'
 
 
         useEffect(() => {
-            axios.get(`http://localhost:5000/api/user/userProfile/${userid}`,{
+            axios.get(`/api/user/userProfile/${userid}`,{
                 headers : {
                     'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
                 }
             })
             .then(result=>{
-                console.log(result.data)
+                // console.log(result.data)
                 setData(result.data)
                 setFollowers(result.data.userFound.followers)
                 setFollowing(result.data.userFound.following)
@@ -31,7 +31,7 @@ import ProSinglePost from '../ProSinglePost/ProSinglePost'
         }, [])
 
         const deletePost = (postID)=>{
-            axios.delete(`http://localhost:5000/api/post/deletepost/${postID}`,{
+            axios.delete(`/api/post/deletepost/${postID}`,{
                 headers : {
                     'Authorization' : 'Bearer ' + localStorage.getItem('jwt')
                 }
@@ -49,7 +49,7 @@ import ProSinglePost from '../ProSinglePost/ProSinglePost'
         }
 
         const followUser = (followID)=>{
-            axios.put('http://localhost:5000/api/user/follow',{
+            axios.put('/api/user/follow',{
                 followID
             },{
                 headers : {
@@ -57,18 +57,10 @@ import ProSinglePost from '../ProSinglePost/ProSinglePost'
                 }
             })
             .then(res=>{
-                console.log(res.data.result)
+                // console.log(res.data.result)
                 dispatch({type: "UPDATE" , payload : {followers : res.data.result.followers, following : res.data.result.following}} )
                 localStorage.setItem('user', JSON.stringify(res.data.result))
-                // setData(prevState=>{
-                //     return {
-                //         ...prevState,
-                //         userFound : {
-                //             ...prevState,
-                //             followers : [...prevState.userFound.followers ,res.data.result._id]
-                //         }
-                //     }
-                // })
+                
                 setFollowers(prevstate=>{
                     return [...prevstate,res.data.result._id]
                 })
@@ -78,7 +70,7 @@ import ProSinglePost from '../ProSinglePost/ProSinglePost'
             })
         }
         const unfollowUser = (followID)=>{
-            axios.put('http://localhost:5000/api/user/unfollow',{
+            axios.put('/api/user/unfollow',{
                 followID
             },{
                 headers : {
@@ -86,18 +78,10 @@ import ProSinglePost from '../ProSinglePost/ProSinglePost'
                 }
             })
             .then(res=>{
-                console.log(res.data.result)
+                // console.log(res.data.result)
                 dispatch({type: "UPDATE" , payload : {followers : res.data.result.followers, following : res.data.result.following}} )
                 localStorage.setItem('user', JSON.stringify(res.data.result))
-                // setData(prevState=>{
-                //     return {
-                //         ...prevState,
-                //         userFound : {
-                //             ...prevState,
-                //             followers : [...prevState.userFound.followers ,res.data.result._id]
-                //         }
-                //     }
-                // })
+    
                 setFollowers(followers.filter(item=>{
                     return item != res.data.result._id;
                 }))
@@ -116,7 +100,7 @@ import ProSinglePost from '../ProSinglePost/ProSinglePost'
                 <div className="container profile_wrapper">
                     <header className="profile_header">
                         <div className="profile_header_left">
-                            <img className="profile_user_dp" src={data.userFound.dpURL}/>
+                            <img alt="userdp" className="profile_user_dp" src={data.userFound.dpURL}/>
                         </div>
                         <section className="profile_header_right">
                             <div className="profile_username">
@@ -150,9 +134,15 @@ import ProSinglePost from '../ProSinglePost/ProSinglePost'
                             <span>POSTS</span>
                         </p>
                         <div className="pro_posts_wrapper">
-                            {data.PostsFound.map(item=>(
+                            {data.PostsFound.length>0 
+                            ?
+                            data.PostsFound.map(item=>(
                                 <ProSinglePost key={item._id} item={item} deletePost={deletePost} otherUser={true} />
-                            ))}
+                            ))
+                            :
+                            <h4>No Posts</h4>
+                            }
+                            
                         </div>
                     </div>
                 </div>
@@ -160,14 +150,14 @@ import ProSinglePost from '../ProSinglePost/ProSinglePost'
             
             : 
 
-            <div class="preloader-wrapper small active" id="spinner_loader">
-                <div class="spinner-layer spinner-green-only">
-                <div class="circle-clipper left">
-                    <div class="circle"></div>
-                </div><div class="gap-patch">
-                    <div class="circle"></div>
-                </div><div class="circle-clipper right">
-                    <div class="circle"></div>
+            <div className="preloader-wrapper small active" id="spinner_loader">
+                <div className="spinner-layer spinner-green-only">
+                <div className="circle-clipper left">
+                    <div className="circle"></div>
+                </div><div className="gap-patch">
+                    <div className="circle"></div>
+                </div><div className="circle-clipper right">
+                    <div className="circle"></div>
                 </div>
                 </div>
             </div>

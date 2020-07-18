@@ -1,7 +1,9 @@
 import React, { useState,useEffect } from 'react'
+import {useHistory} from 'react-router-dom'
 import axios from 'axios'
 
 function CreatePost() {
+        const history = useHistory();
         const [title,setTitle] = useState("");
         const [body,setBody] = useState("");
         const [image,setImage] = useState("");
@@ -9,7 +11,7 @@ function CreatePost() {
 
         useEffect(()=>{
             if(imageUrl){
-                axios.post('http://localhost:5000/api/post/createpost',{
+                axios.post('/api/post/createpost',{
                     title,
                     body,
                     imageURL : imageUrl
@@ -20,6 +22,7 @@ function CreatePost() {
                     })
                     .then((result)=>{
                         console.log('added in mongodb :'+ result );
+                        history.push('/profile')
                     })
                     .catch(err=>{
                         console.log(err);
@@ -56,25 +59,27 @@ function CreatePost() {
 
                 }}
             >
-                <h2>Create a Post</h2>
+                <h2 id="create_post_title">Create a Post</h2>
 
                 <input 
                     type="text" 
-                    placeholder="Title"
+                    placeholder="Location"
                     value = {title}
+                    required
                     onChange={(e)=>setTitle(e.target.value)}
                 />
                 <input 
                     type="text"
-                    placeholder="Body"
+                    placeholder="Caption"
                     value = {body}
+                    required
                     onChange={(e)=>setBody(e.target.value)}    
                 />
                     
                 <div className="file-field input-field">
-                    <div className="btn">
+                    <div className="btn blue">
                         <span>Select Image</span>
-                        <input type="file" onChange={e=>setImage(e.target.files[0])}/>
+                        <input type="file" required onChange={e=>setImage(e.target.files[0])}/>
                     </div>
                     <div className="file-path-wrapper">
                         <input className="file-path validate" type="text"/>

@@ -9,30 +9,31 @@ import axios from 'axios'
     const [uploading,setUploading] = useState(false);
 
     useEffect(()=>{
-      const options = {
-        onOpenStart: () => {
-          console.log("Open Start");
-        },
-        onOpenEnd: () => {
-          console.log("Open End");
-        },
-        onCloseStart: () => {
-          console.log("Close Start");
-        },
-        onCloseEnd: () => {
-          console.log("Close End");
-        },
-        inDuration: 250,
-        outDuration: 250,
-        opacity: 0.5,
-        dismissible: false,
-        startingTop: "4%",
-        endingTop: "10%"
-      };
+      // const options = {
+      //   onOpenStart: () => {
+      //     console.log("Open Start");
+      //   },
+      //   onOpenEnd: () => {
+      //     console.log("Open End");
+      //   },
+      //   onCloseStart: () => {
+      //     console.log("Close Start");
+      //   },
+      //   onCloseEnd: () => {
+      //     console.log("Close End");
+      //   },
+      //   inDuration: 250,
+      //   outDuration: 250,
+      //   opacity: 0.5,
+      //   dismissible: false,
+      //   startingTop: "4%",
+      //   endingTop: "10%"
+      // };
 
        
       var elems = document.querySelectorAll('.modal');
-      var instances = M.Modal.init(elems, options);
+      // var instances = M.Modal.init(elems, options);
+      var instances = M.Modal.init(elems);
       
 
     },[])
@@ -42,7 +43,7 @@ import axios from 'axios'
       if(dpURL){
         const elem = document.getElementById('modal1')
         const instance = M.Modal.init(elem)
-          axios.put('http://localhost:5000/api/user/dpupload',{
+          axios.put('/api/user/dpupload',{
 
               dpURL : dpURL
               },{
@@ -117,7 +118,7 @@ import axios from 'axios'
                       </div>
 
                       <div className="file-field input-field">
-                          <div className="btn">
+                          <div className="btn blue">
                               <span>Select Image</span>
                               <input type="file" onChange={(e)=>setDisplayImg(e.target.files[0])}/>
                           </div>
@@ -131,7 +132,7 @@ import axios from 'axios'
                     </div>
 
                     {!uploading ? 
-                      <div class="modal-footer">
+                      <div className="modal-footer">
                         <a className="modal-close waves-effect waves-red btn-flat">
                         Close
                         </a>                         

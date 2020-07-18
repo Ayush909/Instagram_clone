@@ -14,7 +14,6 @@
 .profile_header_left{
     display: flex;
     justify-content: center;
-    margin-right: 30px;
 }
 .profile_header_right{
     margin-top: 10px;

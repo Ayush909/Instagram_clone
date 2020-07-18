@@ -21,7 +21,7 @@ function SignIn() {
             password
         }
 
-        axios.post('http://localhost:5000/api/signin',user)
+        axios.post('/api/signin',user)
             .then(res=>{
                 console.log(res.data)
                 localStorage.setItem('jwt',res.data.token)
@@ -52,7 +52,7 @@ function SignIn() {
                             onChange={e=>setEmail(e.target.value)}
                         />
                         <input
-                            type="text"
+                            type="password"
                             placeholder="Password"
                             value={password}
                             required
