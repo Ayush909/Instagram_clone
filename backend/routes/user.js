@@ -4,6 +4,20 @@ const tokenValidation = require('../helpers/tokenValidation')
 const User = require('../models/user.model');
 const Post = require('../models/post.model');
 
+
+router.get('/allusers',(req,res)=>{
+    User.find()
+    .select('name _id')
+    .then(result=>{
+        res.send(result)
+    })
+    .catch(err=>{
+        res.status(400).json({ message: "Couldn't find  users", error: err })
+    })
+    
+})
+
+
 router.get('/myprofile',tokenValidation,(req,res)=>{
     User.findById(req.user._id)
         .select("-password")

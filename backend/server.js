@@ -15,7 +15,7 @@ mongoose.connect(process.env.DB_CONNECTION,{useNewUrlParser: true, useUnifiedTop
     console.log('DB connected!');
 })
 //middlewares
-app.use(cors());
+// app.use(cors());
 app.use(express.json());
 
 //app routes
