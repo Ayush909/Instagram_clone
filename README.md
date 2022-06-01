@@ -1,6 +1,7 @@
 # Instagram Clone
 
-A Full Stack Social Networking Site using MERN stack.
+A Full Stack Social Networking Site using MERN stack. 
+Demo Link : http://instagram-ayush.herokuapp.com/
 
 Salient features
 
